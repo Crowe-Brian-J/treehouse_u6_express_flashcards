@@ -24,7 +24,8 @@ app.set('layout', 'layouts/main')
 
 // ROUTE - GET request
 app.get('/', (req, res) => {
-  res.render('index', { title: 'Flash Cards' })
+  const name = req.cookies.username
+  res.render('index', { title: 'Flash Cards', name })
 })
 
 // ROUTE - GET request (on /cards)
@@ -44,7 +45,7 @@ app.get('/hello', (req, res) => {
 // ROUTE - POST request (on /hello)
 app.post('/hello', (req, res) => {
   res.cookie('username', req.body.userName) // Singular
-  res.render('hello', { name: req.body.userName })
+  res.redirect('/')
 })
 
 // Set server up
