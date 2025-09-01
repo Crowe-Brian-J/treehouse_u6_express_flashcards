@@ -31,9 +31,7 @@ app.get('/cards', (req, res) => {
 
 //ROUTE - GET request (on /hello)
 app.get('/hello', (req, res) => {
-  res.render('hello', {
-    title: 'Flash Cards - Welcome'
-  })
+  res.render('hello', {})
 })
 
 // Set server up
