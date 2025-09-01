@@ -1,20 +1,32 @@
 // Require express
 const express = require('express')
+// Require EJS
+const ejs = require('ejs')
+const path = require('path') // Required for path.join
 
 // Invoke express
 const app = express()
 
+// Set EJS as the view engine
+app.set('view engine', 'ejs')
+// Set the directory for your EJS template files
+app.set('views', path.join(__dirname, 'views'))
+
 //ROUTE - How to respond on GET request
 app.get('/', (req, res) => {
-  res.send('<h1>I love Treehouse!</h1>')
+  res.render('index', { title: 'My express app', message: 'I love Treehouse!' })
 })
 
 //ROUTE - How to respond on GET request (on /hello)
 app.get('/hello', (req, res) => {
-  res.send('<h1>Hello, JavaScript Developer!</h1>')
+  res.render('index', {
+    title: 'My express app',
+    message: 'Hello, JavaScript Developer!'
+  })
 })
 
 // Set server up - Currently sends error because we haven't set anything up to retrieve from the server
-app.listen(3000, () => {
+const PORT = process.env.PORT || 3000
+app.listen(PORT, () => {
   console.log('The application is running on localhost:3000') //Broadcast what's happening
 })
