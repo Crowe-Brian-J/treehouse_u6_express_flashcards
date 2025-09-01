@@ -24,7 +24,8 @@ app.get('/cards', (req, res) => {
   res.render('card', {
     title: 'Flash Cards',
     prompt: "Who is buried in Grant's tomb?",
-    hint: "Think about who's tomb it is."
+    hint: "Think about who's tomb it is.",
+    colors: colors
   })
 })
 
