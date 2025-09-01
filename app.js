@@ -2,9 +2,13 @@
 const express = require('express')
 const expressLayouts = require('express-ejs-layouts')
 const path = require('path') // Required for path.join
+const bodyParser = require('body-parser') // To read form
 
 // Invoke express
 const app = express()
+
+// Use body-parser
+app.use(bodyParser.urlencoded({ extended: false }))
 
 // Set EJS as the view engine
 app.set('view engine', 'ejs')
@@ -36,6 +40,7 @@ app.get('/hello', (req, res) => {
 
 //ROUTE - POST request (on /hello)
 app.post('/hello', (req, res) => {
+  console.dir(req.body)
   res.render('hello', {})
 })
 
