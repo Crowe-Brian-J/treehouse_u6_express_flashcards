@@ -1,6 +1,10 @@
-<h2>Welcome, student!</h2>
-<form action="/hello" method="POST">
-  <label for="name">Please enter your name:</label>
-  <input type="text" name="userName" id="name" autocomplete="off">
-  <button type="submit">Submit</button>
-</form>
+<% if (typeof name !== 'undefined' && name.trim().length > 0) { %>
+  <h2>Welcome, <%= name %>!</h2>
+<% } else { %>
+  <h2>Welcome, student!</h2>
+  <form action="/hello" method="POST">
+    <label for="name">Please enter your name:</label>
+    <input type="text" name="userName" id="name" autocomplete="off">
+    <button type="submit">Submit</button>
+  </form>
+<% } %>

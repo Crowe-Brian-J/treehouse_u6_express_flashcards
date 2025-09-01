@@ -40,8 +40,7 @@ app.get('/hello', (req, res) => {
 
 //ROUTE - POST request (on /hello)
 app.post('/hello', (req, res) => {
-  console.dir(req.body)
-  res.render('hello', {})
+  res.render('hello', { name: req.body.userName })
 })
 
 // Set server up
