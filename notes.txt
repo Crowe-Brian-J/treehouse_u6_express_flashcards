@@ -1,6 +1,11 @@
 HTTP Verbs
 ----------
-GET - Requests data from server
-PUSH - Sends data to server
-PUT
-DELETE
+GET 
+- Requests data from server
+PUSH 
+- Sends data to server
+PUT 
+- Replaces all current representations of the target resource with this request (UPDATE)
+DELETE 
+- Deletes the specified resource
+(There are more. Instructor didn't cover the last two)
