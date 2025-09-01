@@ -1,0 +1,6 @@
+HTTP Verbs
+----------
+GET - Requests data from server
+PUSH - Sends data to server
+PUT
+DELETE
