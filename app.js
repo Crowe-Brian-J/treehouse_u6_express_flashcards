@@ -1,7 +1,5 @@
 // Require express
 const express = require('express')
-// Require EJS
-const ejs = require('ejs')
 const expressLayouts = require('express-ejs-layouts')
 const path = require('path') // Required for path.join
 
@@ -31,7 +29,7 @@ app.get('/cards', (req, res) => {
   })
 })
 
-// Set server up - Currently sends error because we haven't set anything up to retrieve from the server
+// Set server up
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
   console.log('The application is running on localhost:3000') //Broadcast what's happening
