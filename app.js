@@ -2,17 +2,20 @@
 const express = require('express')
 // Require EJS
 const ejs = require('ejs')
+const expressLayouts = require('express-ejs-layouts')
 const path = require('path') // Required for path.join
 
 // Invoke express
 const app = express()
 
-const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
-
 // Set EJS as the view engine
 app.set('view engine', 'ejs')
 // Set the directory for your EJS template files
 app.set('views', path.join(__dirname, 'views'))
+app.use(expressLayouts)
+
+// Set default layout file
+app.set('layout', 'layouts/main')
 
 //ROUTE - How to respond on GET request
 app.get('/', (req, res) => {
