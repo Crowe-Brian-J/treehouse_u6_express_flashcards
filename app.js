@@ -34,6 +34,11 @@ app.get('/hello', (req, res) => {
   res.render('hello', {})
 })
 
+//ROUTE - POST request (on /hello)
+app.post('/hello', (req, res) => {
+  res.render('hello', {})
+})
+
 // Set server up
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
