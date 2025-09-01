@@ -14,14 +14,15 @@ app.set('views', path.join(__dirname, 'views'))
 
 //ROUTE - How to respond on GET request
 app.get('/', (req, res) => {
-  res.render('index', { title: 'My express app', message: 'I love Treehouse!' })
+  res.render('index', { title: 'Flash Cards' })
 })
 
-//ROUTE - How to respond on GET request (on /hello)
-app.get('/hello', (req, res) => {
-  res.render('index', {
-    title: 'My express app',
-    message: 'Hello, JavaScript Developer!'
+//ROUTE - How to respond on GET request (on /cards)
+app.get('/cards', (req, res) => {
+  res.render('card', {
+    title: 'Flash Cards',
+    prompt: "Who is buried in Grant's tomb?",
+    hint: "Think about who's tomb it is."
   })
 })
 
