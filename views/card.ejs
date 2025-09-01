@@ -12,9 +12,9 @@
     </header>
     <section id="content">
       <h2><%= prompt %></h2>
-      <p>
-        <i>Hint: <%= hint %></i>
-      </p>
+        <p>
+          <i>Hint: <%= typeof hint !== 'undefined' && hint.length > 0 ? hint : 'There is no hint' %></i>
+        </p>
     </section>
     <footer>
       <p>An app to help you study</p>

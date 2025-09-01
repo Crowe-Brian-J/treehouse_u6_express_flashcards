@@ -7,6 +7,8 @@ const path = require('path') // Required for path.join
 // Invoke express
 const app = express()
 
+const colors = ['red', 'orange', 'yellow', 'green', 'blue', 'indigo', 'violet']
+
 // Set EJS as the view engine
 app.set('view engine', 'ejs')
 // Set the directory for your EJS template files
