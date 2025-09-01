@@ -25,7 +25,11 @@ app.set('layout', 'layouts/main')
 // ROUTE - GET request
 app.get('/', (req, res) => {
   const name = req.cookies.username
-  res.render('index', { title: 'Flash Cards', name })
+  if (typeof name === 'undefined') {
+    res.redirect('/hello')
+  } else {
+    res.render('index', { title: 'Flash Cards', name })
+  }
 })
 
 // ROUTE - GET request (on /cards)
@@ -39,7 +43,18 @@ app.get('/cards', (req, res) => {
 
 // ROUTE - GET request (on /hello)
 app.get('/hello', (req, res) => {
-  res.render('hello', { name: req.cookies.username }) // Plural
+  const name = req.cookies.username
+  if (typeof name === 'undefined') {
+    res.render('hello', { name: req.cookies.username }) // Plural
+  } else {
+    res.redirect('/')
+  }
+})
+
+// ROUTE - POST request (on /logout)
+app.post('/logout', (req, res) => {
+  res.clearCookie('username')
+  res.redirect('hello')
 })
 
 // ROUTE - POST request (on /hello)
