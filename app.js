@@ -15,17 +15,24 @@ app.use(expressLayouts)
 // Set default layout file
 app.set('layout', 'layouts/main')
 
-//ROUTE - How to respond on GET request
+//ROUTE - GET request
 app.get('/', (req, res) => {
   res.render('index', { title: 'Flash Cards' })
 })
 
-//ROUTE - How to respond on GET request (on /cards)
+//ROUTE - GET request (on /cards)
 app.get('/cards', (req, res) => {
   res.render('card', {
     title: 'Flash Cards',
     prompt: "Who is buried in Grant's tomb?",
     hint: "Think about who's tomb it is."
+  })
+})
+
+//ROUTE - GET request (on /hello)
+app.get('/hello', (req, res) => {
+  res.render('hello', {
+    title: 'Flash Cards - Welcome'
   })
 })
 
