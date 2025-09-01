@@ -19,6 +19,22 @@ app.set('view engine', 'ejs')
 app.set('views', path.join(__dirname, 'views'))
 app.use(expressLayouts)
 
+app.use(
+  (req, res, next) => {
+    console.log('One')
+    next()
+  },
+  (req, res, next) => {
+    console.log('One and a half')
+    next()
+  }
+)
+
+app.use((req, res, next) => {
+  console.log('Two')
+  next()
+})
+
 // Set default layout file
 app.set('layout', 'layouts/main')
 
