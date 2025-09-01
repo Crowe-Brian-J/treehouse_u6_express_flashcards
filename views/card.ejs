@@ -11,11 +11,6 @@
       <h1><%= title %></h1>
     </header>
     <section id="content">
-      <ul>
-        <% colors.forEach((color) => { %>
-          <li><%= color %></li>
-        <% }) %>
-      </ul>
       <h2><%= prompt %></h2>
         <p>
           <i><%= typeof hint !== 'undefined' && hint.length > 0 ? 'Hint: ' + hint : '' %></i>
