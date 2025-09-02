@@ -4,12 +4,31 @@ const { data } = require('../data/flashcardData.json')
 const { cards } = data
 
 // ROUTE - GET request (on /cards)
+router.get('/', (req, res) => {
+  const randomIndex = Math.floor(Math.random() * cards.length)
+  res.redirect(`/cards/${randomIndex}?side=question`)
+})
+
+// ROUTE - GET request (on /cards/:id)
 router.get('/:id', (req, res) => {
-  res.render('card', {
-    title: 'Flash Cards',
-    prompt: cards[req.params.id].question,
-    hint: cards[req.params.id].hint
-  })
+  const { side } = req.query
+  const { id } = req.params
+
+  if (!side) {
+    // Default: redirect to question side if no query provided
+    return res.redirect(`/cards/${id}?side=question`)
+  }
+
+  const text = cards[id][side]
+  const { hint } = cards[id]
+
+  const templateData = { id, text, side }
+
+  if (side === 'question') {
+    templateData.hint = hint
+  }
+
+  res.render('card', templateData)
 })
 
 module.exports = router
