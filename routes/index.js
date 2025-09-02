@@ -30,14 +30,16 @@ router.get('/hello', (req, res) => {
   }
 })
 
+// ROUTE - POST request (on /hello)
+router.post('/hello', (req, res) => {
+  res.cookie('username', req.body.userName) // Singular
+  res.redirect('/')
+})
+
 // ROUTE - POST request (on /logout)
 router.post('/logout', (req, res) => {
   res.clearCookie('username')
   res.redirect('hello')
 })
 
-// ROUTE - POST request (on /hello)
-router.post('/hello', (req, res) => {
-  res.cookie('username', req.body.userName) // Singular
-  res.redirect('/')
-})
+module.exports = router

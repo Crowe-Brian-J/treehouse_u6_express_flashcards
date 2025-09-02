@@ -5,6 +5,9 @@ const path = require('path') // Required for path.join
 const bodyParser = require('body-parser') // To read form
 const cookieParser = require('cookie-parser') // To use cookies for name
 
+// Get routes from routes folder
+const routes = require('./routes/index')
+
 // Invoke express
 const app = express()
 
@@ -16,65 +19,27 @@ app.use(cookieParser())
 // Set EJS as the view engine
 app.set('view engine', 'ejs')
 // Set the directory for your EJS template files
+
 app.set('views', path.join(__dirname, 'views'))
 app.use(expressLayouts)
+// Set default layout file
+app.set('layout', 'layouts/main')
 
-app.use((req, res, next) => {
+// Use routes from routes folder
+app.use('/', routes)
+
+/* app.use((req, res, next) => {
   req.message = 'This message made it!'
-  // const err = new Error('Oh noes!')
-  // err.status = 500
+  const err = new Error('Oh noes!')
+  err.status = 500
   next()
-  /* App hangs when next() is not called - express relies on next() to know when to move forward -OR- moves forward by sending a res(ponse)*/
+  -- App hangs when next() is not called - express relies on next() to know when to move forward -OR- moves forward by sending a res(ponse)
 })
 
 app.use((req, res, next) => {
   console.log(req.message)
   next()
-})
-
-// Set default layout file
-app.set('layout', 'layouts/main')
-
-// ROUTE - GET request
-app.get('/', (req, res) => {
-  const name = req.cookies.username
-  if (typeof name === 'undefined') {
-    res.redirect('/hello')
-  } else {
-    res.render('index', { title: 'Flash Cards', name })
-  }
-})
-
-// ROUTE - GET request (on /cards)
-app.get('/cards', (req, res) => {
-  res.render('card', {
-    title: 'Flash Cards',
-    prompt: "Who is buried in Grant's tomb?",
-    hint: "Think about who's tomb it is."
-  })
-})
-
-// ROUTE - GET request (on /hello)
-app.get('/hello', (req, res) => {
-  const name = req.cookies.username
-  if (typeof name === 'undefined') {
-    res.render('hello', { name: req.cookies.username }) // Plural
-  } else {
-    res.redirect('/')
-  }
-})
-
-// ROUTE - POST request (on /logout)
-app.post('/logout', (req, res) => {
-  res.clearCookie('username')
-  res.redirect('hello')
-})
-
-// ROUTE - POST request (on /hello)
-app.post('/hello', (req, res) => {
-  res.cookie('username', req.body.userName) // Singular
-  res.redirect('/')
-})
+}) */
 
 // 404 Error Handler
 app.use((req, res, next) => {
