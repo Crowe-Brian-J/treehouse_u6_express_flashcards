@@ -6,7 +6,8 @@ const bodyParser = require('body-parser') // To read form
 const cookieParser = require('cookie-parser') // To use cookies for name
 
 // Get routes from routes folder
-const routes = require('./routes/index')
+const mainRoutes = require('./routes/index')
+const cardRoutes = require('./routes/cards')
 
 // Invoke express
 const app = express()
@@ -26,13 +27,14 @@ app.use(expressLayouts)
 app.set('layout', 'layouts/main')
 
 // Use routes from routes folder
-app.use('/', routes)
+app.use('/', mainRoutes)
+app.use('/cards', cardRoutes)
 
 /* app.use((req, res, next) => {
   req.message = 'This message made it!'
   const err = new Error('Oh noes!')
   err.status = 500
-  next()
+  next(err)
   -- App hangs when next() is not called - express relies on next() to know when to move forward -OR- moves forward by sending a res(ponse)
 })
 
