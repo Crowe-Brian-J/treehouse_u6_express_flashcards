@@ -11,15 +11,6 @@ router.get('/', (req, res) => {
   }
 })
 
-// ROUTE - GET request (on /cards)
-router.get('/cards', (req, res) => {
-  res.render('card', {
-    title: 'Flash Cards',
-    prompt: "Who is buried in Grant's tomb?",
-    hint: "Think about who's tomb it is."
-  })
-})
-
 // ROUTE - GET request (on /hello)
 router.get('/hello', (req, res) => {
   const name = req.cookies.username
