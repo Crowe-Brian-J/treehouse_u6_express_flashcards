@@ -22,6 +22,7 @@ app.use(expressLayouts)
 app.use((req, res, next) => {
   req.message = 'This message made it!'
   const err = new Error('Oh noes!')
+  err.status = 500
   next(err)
   /* App hangs when next() is not called - express relies on next() to know when to move forward -OR- moves forward by sending a res(ponse)*/
 })
@@ -73,6 +74,13 @@ app.post('/logout', (req, res) => {
 app.post('/hello', (req, res) => {
   res.cookie('username', req.body.userName) // Singular
   res.redirect('/')
+})
+
+// Error Middleware has 4 parameters (err at beginning) - Regular Middware: 3
+app.use((err, req, res, next) => {
+  res.locals.error = err
+  res.status(err.status)
+  res.render('error', err)
 })
 
 // Set server up
