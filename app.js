@@ -16,6 +16,8 @@ const app = express()
 app.use(bodyParser.urlencoded({ extended: false }))
 // Use cookie-parser
 app.use(cookieParser())
+// Static Middleware
+app.use('/static', express.static('public'))
 
 // Set EJS as the view engine
 app.set('view engine', 'ejs')
@@ -60,5 +62,5 @@ app.use((err, req, res, next) => {
 // Set server up
 const PORT = process.env.PORT || 3000
 app.listen(PORT, () => {
-  console.log('The application is running on localhost:3000') //Broadcast what's happening
+  console.log('This application is running on localhost:3000') //Broadcast what's happening
 })
