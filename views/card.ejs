@@ -1,9 +1,10 @@
 <h2><%= text %></h2>
 <p>
   <i><%= typeof hint !== 'undefined' && hint.length > 0 ? 'Hint: ' + hint : '' %></i>
-  <br>
+  <br><br>
 
   <a class="btn" href="/cards/<%= id %>?side=<%= side === 'question' ? 'answer' : 'question' %>">
   <%= side === 'question' ? 'Answer' : 'Question' %>
-</a>
+</a><br><br>
+<a class="btn" href="/cards">Next Card</a>
 </p>
