@@ -9,6 +9,13 @@
     <header>
       <h1>Flash Cards</h1>
     </header>
+    <% if (name) { %>
+    <h2>Welcome, <%= name %>!</h2>
+    
+    <form action="/logout" method="POST">
+          <button type="submit">Goodbye, <%= name %></button>
+    </form>
+    <% } %>
 
     <section id="content">
       <!-- Where the view content will be injected -->
