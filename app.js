@@ -21,7 +21,9 @@ app.use(expressLayouts)
 
 app.use((req, res, next) => {
   req.message = 'This message made it!'
-  next()
+  const err = new Error('Oh noes!')
+  next(err)
+  /* App hangs when next() is not called - express relies on next() to know when to move forward -OR- moves forward by sending a res(ponse)*/
 })
 
 app.use((req, res, next) => {
